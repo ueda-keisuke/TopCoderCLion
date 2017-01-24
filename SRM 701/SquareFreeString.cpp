@@ -17,11 +17,25 @@ class SquareFreeString {
     string isSquareFree(string s) {
 
         for( int i = 0; i < s.length() - 1; i++ )
-            for( int j = 0; j < )
+            for( int j = 2; i + j <= s.length(); j += 2 )
+            {
+                string substring = s.substr(i, j);
+//                cout << "substring: " << substring << endl;
 
+                int len = substring.length() / 2;
+                string left = substring.substr(0, len);
+                string right = substring.substr(len);
 
+//                cout << "left: " << left << endl;
+//                cout << "right: " << right << endl;
 
-        return "";
+                if( left == right )
+                {
+                    return "not square-free";
+                }
+            }
+
+        return "square-free";
     }
 };
 
