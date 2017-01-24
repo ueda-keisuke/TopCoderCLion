@@ -16,12 +16,12 @@ class LastDigit {
     public:
     long long findX(long long S) {
 
-        long long a = S + 1;
-        long long b = 0;
+        long long max = S + 1;
+        long long min = 0;
 
-        while( b < a )
+        while( min <= max )
         {
-            long long mid = ( a + b ) / 2;
+            long long mid = min + ( max - min ) / 2;
             long long sum = 0;
 
             while( mid != 0 )
@@ -30,15 +30,17 @@ class LastDigit {
                 mid /= 10;
             }
 
+            mid = min + ( max - min ) / 2;
+
             if( sum == S )
             {
-                return ( a + b ) / 2;
+                return mid;
             }
 
             if( sum < S )
-                b = ( a + b ) / 2 + 1;
+                min = mid + 1;
             else
-                a = ( a + b ) / 2;
+                max = mid - 1;
         }
 
         return -1;
